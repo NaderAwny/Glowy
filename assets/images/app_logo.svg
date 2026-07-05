@@ -1,0 +1,112 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Depth -->
+    <radialGradient id="bg" cx="50%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#1A0B2E" />
+      <stop offset="100%" stop-color="#05020A" />
+    </radialGradient>
+
+    <!-- Card 1 (Back/Left) Gradients -->
+    <linearGradient id="c1_stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF00A0" />
+      <stop offset="50%" stop-color="#7A00FF" />
+      <stop offset="100%" stop-color="#7A00FF" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="c1_fill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF00A0" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#7A00FF" stop-opacity="0.0" />
+    </linearGradient>
+
+    <!-- Card 2 (Middle) Gradients -->
+    <linearGradient id="c2_stroke" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#B200FF" />
+      <stop offset="60%" stop-color="#0066FF" />
+      <stop offset="100%" stop-color="#0066FF" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="c2_fill" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#B200FF" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#0066FF" stop-opacity="0.0" />
+    </linearGradient>
+
+    <!-- Card 3 (Front/Right) Gradients -->
+    <linearGradient id="c3_stroke" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00FFFF" />
+      <stop offset="60%" stop-color="#0066FF" />
+      <stop offset="100%" stop-color="#0066FF" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="c3_fill" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00FFFF" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#0066FF" stop-opacity="0.0" />
+    </linearGradient>
+
+    <!-- Orb Gradient -->
+    <radialGradient id="orb_fill" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00FFFF" />
+      <stop offset="100%" stop-color="#0066FF" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Glow Filters -->
+    <filter id="glow_heavy" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="32" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="glow_light" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- App Icon Dark Canvas -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)" />
+
+  <!-- Deep Ambient Background Glow -->
+  <circle cx="256" cy="220" r="140" fill="#7A00FF" filter="url(#glow_heavy)" opacity="0.4" />
+
+  <!-- ========================================== -->
+  <!-- CARD 1: BACK LAYER (Pink/Purple)           -->
+  <!-- ========================================== -->
+  <g transform="rotate(-24 256 380)">
+    <!-- Blurred Neon Tube Effect -->
+    <rect x="166" y="116" width="180" height="280" rx="36" fill="url(#c1_fill)" stroke="url(#c1_stroke)" stroke-width="6" filter="url(#glow_light)" />
+    <!-- Crisp Inner Glass Border -->
+    <rect x="166" y="116" width="180" height="280" rx="36" fill="none" stroke="url(#c1_stroke)" stroke-width="2" />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- CARD 2: MIDDLE LAYER (Purple/Blue)         -->
+  <!-- ========================================== -->
+  <g transform="rotate(0 256 380)">
+    <rect x="166" y="116" width="180" height="280" rx="36" fill="url(#c2_fill)" stroke="url(#c2_stroke)" stroke-width="6" filter="url(#glow_light)" />
+    <rect x="166" y="116" width="180" height="280" rx="36" fill="none" stroke="url(#c2_stroke)" stroke-width="2" />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- CORE GLOW ORB (Trapped between layers)     -->
+  <!-- ========================================== -->
+  <g transform="translate(0, -20)">
+    <circle cx="256" cy="220" r="56" fill="url(#orb_fill)" filter="url(#glow_heavy)" opacity="0.9">
+      <animate attributeName="opacity" values="0.6; 1; 0.6" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="256" cy="220" r="20" fill="#FFFFFF" filter="url(#glow_light)" />
+    <circle cx="256" cy="220" r="8" fill="#FFFFFF" />
+  </g>
+
+  <!-- ========================================== -->
+  <!-- CARD 3: FRONT LAYER (Cyan/Blue)            -->
+  <!-- ========================================== -->
+  <g transform="rotate(24 256 380)">
+    <rect x="166" y="116" width="180" height="280" rx="36" fill="url(#c3_fill)" stroke="url(#c3_stroke)" stroke-width="6" filter="url(#glow_light)" />
+    <rect x="166" y="116" width="180" height="280" rx="36" fill="none" stroke="url(#c3_stroke)" stroke-width="2" />
+    
+    <!-- Shimmering Sparkle on Top Right Corner -->
+    <g filter="url(#glow_light)">
+      <path d="M 336 106 Q 336 126 356 126 Q 336 126 336 146 Q 336 126 316 126 Q 336 126 336 106 Z" fill="#FFFFFF">
+        <animate attributeName="opacity" values="0.4; 1; 0.4" dur="2s" repeatCount="indefinite" />
+      </path>
+    </g>
+    <path d="M 336 106 Q 336 126 356 126 Q 336 126 336 146 Q 336 126 316 126 Q 336 126 336 106 Z" fill="#FFFFFF">
+        <animate attributeName="opacity" values="0.4; 1; 0.4" dur="2s" repeatCount="indefinite" />
+    </path>
+  </g>
+
+</svg>
