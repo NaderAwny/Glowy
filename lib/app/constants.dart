@@ -4,5 +4,5 @@ class Constants {
   static const String empty = "";
   static const int zero = 0;
   static const bool isFalse = false;
-  static const int apiTimeOut = 1000;
+  static const int apiTimeOut = 500;
 }

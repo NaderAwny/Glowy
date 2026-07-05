@@ -26,7 +26,7 @@ abstract class AppModule {
       );
 
   @lazySingleton
-  Dio dio(DioFactory dioFactory) => DioFactory().dio;
+  Dio dio(DioFactory dioFactory) => dioFactory.dio;
 
   @lazySingleton
   AppServiceClient appServiceClient(Dio dio) => AppServiceClient(dio);

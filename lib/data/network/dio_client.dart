@@ -11,14 +11,9 @@ const String ACCEPT = "accept";
 
 @lazySingleton
 class DioFactory {
-  // singleton instance
-  static final DioFactory _instance = DioFactory._internal();
-
-  // dio instance
   late final Dio dio;
 
-  // private constructor
-  DioFactory._internal() {
+  DioFactory() {
     Map<String, String> headers = {
       CONTENT_TYPE: APPLICATION_JSON,
       ACCEPT: APPLICATION_JSON,
@@ -63,9 +58,5 @@ class DioFactory {
         ),
       );
     }
-  }
-  // factory constructor
-  factory DioFactory() {
-    return _instance;
   }
 }
