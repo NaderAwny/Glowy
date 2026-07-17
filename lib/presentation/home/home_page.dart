@@ -149,6 +149,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         alignment: Alignment.center,
                         child: Text(
+                          key: Key('category_name_${category.name}'),
                           category.name,
                           style: isSelected
                               ? getRegularStyle(

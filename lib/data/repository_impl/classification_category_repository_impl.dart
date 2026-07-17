@@ -33,7 +33,7 @@ class GetClassificationCategoryRepositoryImpl
         debugPrint('>>> [HOME RAW] message: ${response.message}');
         debugPrint('>>> [HOME RAW] data: ${response.data}');
         debugPrint(
-          '>>> [HOME RAW] services: ${response.data?.classifications}',
+          '>>> [HOME RAW] classifications: ${response.data?.classifications}',
         );
 
         if (response.success == true) {

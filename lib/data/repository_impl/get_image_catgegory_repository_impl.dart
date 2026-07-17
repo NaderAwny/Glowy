@@ -34,8 +34,8 @@ class GetImageCategoryRepositoryImpl implements GetImageCategoryRepository {
         debugPrint('>>> [HOME RAW] status: ${response.success}');
         debugPrint('>>> [HOME RAW] message: ${response.message}');
         debugPrint('>>> [HOME RAW] data: ${response.data}');
-        debugPrint('>>> [HOME RAW] services: ${response.data?.items}');
-        debugPrint('>>> [HOME RAW] banners: ${response.data?.pagination}');
+        debugPrint('>>> [HOME RAW] images: ${response.data?.items}');
+        debugPrint('>>> [HOME RAW] pagination: ${response.data?.pagination}');
 
         if (response.success == true) {
           return Right(response.toDomain());

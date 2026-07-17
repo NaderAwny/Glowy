@@ -26,8 +26,10 @@ class GetDrawerRepositoryImpl implements GetDrawerRepository {
         debugPrint('>>> [HOME RAW] status: ${response.success}');
         debugPrint('>>> [HOME RAW] message: ${response.message}');
         debugPrint('>>> [HOME RAW] data: ${response.data}');
-        debugPrint('>>> [HOME RAW] services: ${response.data?.app}');
-        debugPrint('>>> [HOME RAW] banners: ${response.data?.app?.categories}');
+        debugPrint('>>> [HOME RAW] app: ${response.data?.app}');
+        debugPrint(
+          '>>> [HOME RAW] categories: ${response.data?.app?.categories}',
+        );
 
         if (response.success == true) {
           return Right(response.toDomain());

@@ -26,8 +26,8 @@ class ListAppRepositoryImpl implements ListAppRepository {
         debugPrint('>>> [HOME RAW] status: ${response.success}');
         debugPrint('>>> [HOME RAW] message: ${response.message}');
         debugPrint('>>> [HOME RAW] data: ${response.data}');
-        debugPrint('>>> [HOME RAW] services: ${response.data?.apps}');
-        debugPrint('>>> [HOME RAW] banners: ${response.data?.categories}');
+        debugPrint('>>> [HOME RAW] apps: ${response.data?.apps}');
+        debugPrint('>>> [HOME RAW] categories: ${response.data?.categories}');
 
         if (response.success == true) {
           return Right(response.toDomain());

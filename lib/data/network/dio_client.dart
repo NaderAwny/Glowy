@@ -9,6 +9,11 @@ const String APPLICATION_JSON = "application/json";
 const String CONTENT_TYPE = "content-type";
 const String ACCEPT = "accept";
 
+// الدايجرام بيوضح الثلاث حالات جنب بعض:
+
+// - **Injectable**: الأداة نفسها بتعمل التسجيل، فمفيش داعي لأي كود يدوي.
+// - **GetIt لوحده**: `registerLazySingleton` كفاية، وبرضه مش محتاج سنجلتون يدوي.
+// - **GetIt + سنجلتون يدوي مع بعض**: بيشتغل تمام من غير كسر، بس ده تكرار مش لازم، فالأفضل تسيب واحد بس منهم.
 @lazySingleton
 class DioFactory {
   late final Dio dio;
