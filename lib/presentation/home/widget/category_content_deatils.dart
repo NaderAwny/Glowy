@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:glowy/app/di.dart';
 import 'package:glowy/presentation/home/download_cubit/download_cubit.dart';
 import 'package:glowy/presentation/home/download_cubit/download_state.dart';
 import 'package:glowy/presentation/home/widget/video_item_widget.dart';

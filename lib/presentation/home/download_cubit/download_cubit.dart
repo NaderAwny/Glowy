@@ -39,11 +39,11 @@ Future<void> _downloadEntryPoint(_IsolateMsg msg) async {
 
 @lazySingleton
 class DownloadCubit extends Cubit<DownloadState> {
-  final DownLoadUsecase _downloadUsecase;
+  final DownLoadUsecase downloadUsecase;
   Isolate? _isolate;
   ReceivePort? _port;
 
-  DownloadCubit(this._downloadUsecase) : super(const DownloadState());
+  DownloadCubit(this.downloadUsecase) : super(const DownloadState());
 
   Future<void> downloadWithIsolate({
     required String url,
