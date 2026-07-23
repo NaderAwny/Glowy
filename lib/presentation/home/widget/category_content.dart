@@ -148,6 +148,7 @@ class _CategoryContentState extends State<CategoryContent> {
         final image = categoryImages[index];
         final isTopRated = image.isTopRated ?? false;
         final aspectRatio = index.isEven ? 0.72 : 0.92;
+        final itemMediaType = MediaType.fromString(image.mediaType);
 
         return GestureDetector(
           onTap: () {
@@ -155,8 +156,8 @@ class _CategoryContentState extends State<CategoryContent> {
               context,
               MaterialPageRoute(
                 builder: (context) => CategoryContentDetails(
-                  imageUrl: categoryImages[index].url,
-                  mediaType: widget.selectedMediaType,
+                  imageUrl: image.url,
+                  mediaType: itemMediaType,
                 ),
               ),
             );
@@ -167,11 +168,14 @@ class _CategoryContentState extends State<CategoryContent> {
                 borderRadius: BorderRadius.circular(16),
                 child: AspectRatio(
                   aspectRatio: aspectRatio,
-                  child: switch (widget.selectedMediaType) {
-                    // ── صورة ──
-                    MediaType.image ||
-                    MediaType.classification ||
-                    MediaType.category => CachedNetworkImage(
+                  child: switch (itemMediaType) {
+                    // ── فيديو ──
+                    MediaType.video => VideoItemWidget(
+                      videoUrl: image.url,
+                      thumbUrl: image.thumbUrl,
+                    ),
+                    // ── صورة أو تصنيف آخر ──
+                    _ => CachedNetworkImage(
                       imageUrl: image.thumbUrl ?? image.url,
                       fit: BoxFit.cover,
                       placeholder: (context, url) =>
@@ -184,11 +188,6 @@ class _CategoryContentState extends State<CategoryContent> {
                           size: 32,
                         ),
                       ),
-                    ),
-                    // ── فيديو ──
-                    MediaType.video => VideoItemWidget(
-                      videoUrl: image.url,
-                      thumbUrl: image.thumbUrl,
                     ),
                   },
                 ),

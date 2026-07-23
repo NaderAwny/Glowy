@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:glowy/app/di.dart';
 import 'package:glowy/presentation/home/list_app_cubit/list_app_cubit.dart';
 import 'package:glowy/presentation/home/get_drawer_data_cubit/get_drawer_data_cubit.dart';
+import 'package:glowy/presentation/home/download_cubit/download_cubit.dart';
+import 'package:glowy/presentation/home/download_cubit/download_state.dart';
 import 'package:glowy/presentation/resources/routes_manager.dart';
 import 'package:glowy/presentation/resources/them_manager.dart';
 
@@ -37,12 +39,41 @@ class _MyAppState extends State<MyApp> {
             BlocProvider<GetDrawerDataCubit>(
               create: (context) => getIt<GetDrawerDataCubit>(),
             ),
+            BlocProvider<DownloadCubit>(
+              create: (context) => getIt<DownloadCubit>(),
+            ),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: getApplicationTheme(),
             onGenerateRoute: RouteGenerator.getRoute,
             initialRoute: Routes.splashRoute,
+            builder: (context, child) {
+              return BlocListener<DownloadCubit, DownloadState>(
+                listener: (context, state) {
+                  if (state.status == DownloadStatus.success) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('✅ Saved to Gallery successfully!'),
+                        backgroundColor: Colors.green,
+                        behavior: SnackBarBehavior.floating,
+                      ),
+                    );
+                    context.read<DownloadCubit>().reset();
+                  } else if (state.status == DownloadStatus.failure) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('❌ ${state.errorMessage ?? 'Download failed'}'),
+                        backgroundColor: Colors.red,
+                        behavior: SnackBarBehavior.floating,
+                      ),
+                    );
+                    context.read<DownloadCubit>().reset();
+                  }
+                },
+                child: child,
+              );
+            },
           ),
         );
       },
